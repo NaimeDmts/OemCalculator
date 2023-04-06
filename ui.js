@@ -21,9 +21,7 @@ const UIController = (function(){
                         <td>${prd.name}</td>
                         <td>${prd.price} $</td>
                         <td class="text-right">
-                            <button type="submit" class="btn btn-warning btn-sm">
-                                <i class="far fa-edit"></i>
-                            </button>
+                            <i class="far fa-edit edit-product"></i>
                         </td>
                     </tr>
                 `
@@ -43,9 +41,7 @@ const UIController = (function(){
                     <td>${prd.name}</td>
                     <td>${prd.price} $</td>
                     <td class="text-right">
-                        <button type="submit" class="btn btn-warning btn-sm">
-                            <i class="far fa-edit"></i>
-                        </button>
+                        <i class="far fa-edit edit-product"></i>
                     </td>
                 </tr>
             `;

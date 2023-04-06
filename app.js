@@ -4,7 +4,8 @@ const App = (function(ProductCtrl, UICtrl) {
 
     const loadEventListeners = function(){
 
-        document.querySelector(UISelectors.addButton).addEventListener('click',productAddSubmit);
+        document.querySelector(UISelectors.addButton).addEventListener('click', productAddSubmit);
+        document.querySelector(UISelectors.productList).addEventListener('click', productEditSubmit);
     }
 
     const productAddSubmit = function(e){
@@ -25,6 +26,17 @@ const App = (function(ProductCtrl, UICtrl) {
         }
 
         console.log(productName, productPrice)
+        e.preventDefault();
+    }
+    const productEditSubmit = function(e){
+
+        if(e.target.classList.contains('edit-product')){
+            const is = 
+            e.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+            const product = ProductCtrl.getProductById(id);
+            console.log(product)
+        }
+
         e.preventDefault();
     }
  
