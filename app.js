@@ -5,7 +5,7 @@ const App = (function(ProductCtrl, UICtrl) {
             console.log('starting app...');
             const products = ProductCtrl.getProducts();
             
-            UICtrl.creatProductList(products);
+            UICtrl.createProductList(products);
         }
     }
 

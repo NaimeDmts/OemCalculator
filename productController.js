@@ -10,6 +10,8 @@ const ProductController = (function(){
             {id:0, name: 'Monitör', price:100},
             {id:1, name: 'Ram', price:30},
             {id:2, name: 'Klavye', price:10},
+            {id:3, name: 'Mouse', price:5}
+
         ],
         selectedProduct:null,
         totalPrice:0
