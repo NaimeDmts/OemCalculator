@@ -5,7 +5,9 @@ const UIController = (function(){
         addButton : "#addBTN",
         productName : "#productName",
         productPrice : "#productPrice",
-        productCard : "#productCard"
+        productCard : "#productCard",
+        totalTL : "#total-tl",
+        totalDolar : "#total-dolar"
     }
 
     return {
@@ -56,6 +58,12 @@ const UIController = (function(){
         },
         hideCard : function(){
             document.querySelector(Selectors.productCard).style.display ='none';
+        },
+        showTotal : function(total){
+            document.querySelector(Selectors.totalDolar).textContent = total;
+            document.querySelector(Selectors.totalTL).textContent = total*20;
+
+
         }
     }
 })();

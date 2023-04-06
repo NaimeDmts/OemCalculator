@@ -17,6 +17,10 @@ const App = (function(ProductCtrl, UICtrl) {
            
            UIController.addProduct(newProduct);
 
+           const total = ProductCtrl.getTotal();
+        
+           UIController.showTotal(total);
+
            UIController.clearInputs();
         }
 
