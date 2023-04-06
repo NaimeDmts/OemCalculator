@@ -31,10 +31,13 @@ const App = (function(ProductCtrl, UICtrl) {
     const productEditSubmit = function(e){
 
         if(e.target.classList.contains('edit-product')){
-            const is = 
+            const id = 
             e.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
             const product = ProductCtrl.getProductById(id);
-            console.log(product)
+           
+            ProductCtrl.setCurrentProduct(product);
+
+            UICtrl.addProductToForm();
         }
 
         e.preventDefault();

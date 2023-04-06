@@ -28,6 +28,12 @@ const ProductController = (function(){
             })
             return product;
         },
+        setCurrentProduct : function(product){
+            data.selectedProduct = product;
+        },
+        getCurrentProduct : function (){
+            return data.selectedProduct;
+        },
         addProduct: function(name,price){
             let id;
 
