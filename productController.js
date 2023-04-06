@@ -6,13 +6,7 @@ const ProductController = (function(){
     }
 
     const data = {
-        products : [
-            {id:0, name: 'Monitör', price:100},
-            {id:1, name: 'Ram', price:30},
-            {id:2, name: 'Klavye', price:10},
-            {id:3, name: 'Mouse', price:5}
-
-        ],
+        products : [],
         selectedProduct:null,
         totalPrice:0
     }
@@ -23,6 +17,19 @@ const ProductController = (function(){
         },
         getData: function(){
             return data;
+        },
+        addProduct: function(name,price){
+            let id;
+
+            if(data.products.length > 0){
+                id = data.products[data.products.length-1].id+1;
+            }else{
+                id = 0;
+            }
+
+            const newProduct = new Product(id, name, parseFloat(price));
+            data.products.push(newProduct);
+            return newProduct;
         }
     }
 })();
