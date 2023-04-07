@@ -71,6 +71,15 @@ const UIController = (function(){
             document.querySelector(Selectors.productName).value = '';
             document.querySelector(Selectors.productPrice).value = '';
         },
+        clearWarnings : function(){
+            const items = document.querySelectorAll(Selectors.productListItems);
+
+            items.forEach(function(item){
+                if(item.classList.contains('bg-warning')){
+                    item.classList.remove('bg-warning');
+                }
+            });
+        },
         hideCard : function(){
             document.querySelector(Selectors.productCard).style.display ='none';
         },
@@ -84,11 +93,7 @@ const UIController = (function(){
             document.querySelector(Selectors.productPrice).value = selectedProduct.price;
         },
         addingState : function(item){
-
-            if(item){
-                item.classList.remove('bg-warning');
-            }
-            
+            UIController.clearWarnings();
             UIController.clearInputs();
             document.querySelector(Selectors.addButton).style.display= 'inline';
             document.querySelector(Selectors.updateButton).style.display= 'none';
@@ -96,12 +101,7 @@ const UIController = (function(){
             document.querySelector(Selectors.cancelButton).style.display= 'none';
         },
         editState:function(tr){
-            const parent = tr.parentNode;
-
-            for(let i= 0; i<parent.children.length;i++){
-                parent.children[i].classList.remove('bg-warning');
-            }
-
+            UIController.clearWarnings();
             tr.classList.add('bg-warning');
             document.querySelector(Selectors.addButton).style.display= 'none';
             document.querySelector(Selectors.updateButton).style.display= 'inline';
