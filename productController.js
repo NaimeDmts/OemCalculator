@@ -73,7 +73,7 @@ const ProductController = (function(){
             let total=0;
 
             data.products.forEach(function(item){
-                total += item.price
+                total += item.price;
             });
 
             data.totalPrice = total;

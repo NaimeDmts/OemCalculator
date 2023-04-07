@@ -19,15 +19,15 @@ const App = (function(ProductCtrl, UICtrl, StorageCtrl) {
         if(productName!=='' && productPrice!==''){
            const newProduct = ProductCtrl.addProduct(productName,productPrice);
            
-           UIController.addProduct(newProduct);
+           UICtrl.addProduct(newProduct);
 
            StorageCtrl.storeProduct(newProduct);
 
            const total = ProductCtrl.getTotal();
         
-           UIController.showTotal(total);
+           UICtrl.showTotal(total);
 
-           UIController.clearInputs();
+           UICtrl.clearInputs();
         }
 
         console.log(productName, productPrice)
@@ -36,14 +36,12 @@ const App = (function(ProductCtrl, UICtrl, StorageCtrl) {
     const productEditClick = function(e){
 
         if(e.target.classList.contains('edit-product')){
-            const id = 
-            e.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+            const id = e.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
             const product = ProductCtrl.getProductById(id);
            
             ProductCtrl.setCurrentProduct(product);
 
             UICtrl.addProductToForm();
-
 
             UICtrl.editState(e.target.parentNode.parentNode);
         }
@@ -59,10 +57,11 @@ const App = (function(ProductCtrl, UICtrl, StorageCtrl) {
             const updatedProduct = ProductCtrl.updateProduct(productName, productPrice);
 
             let item = UICtrl.updateProduct(updatedProduct);
+            StorageCtrl.updateProduct(updatedProduct);
             
             const total = ProductCtrl.getTotal();
         
-            UIController.showTotal(total);
+            UICtrl.showTotal(total);
 
             UICtrl.addingState();
         }
@@ -83,7 +82,9 @@ const App = (function(ProductCtrl, UICtrl, StorageCtrl) {
 
         const total = ProductCtrl.getTotal();
         
-        UIController.showTotal(total);
+        UICtrl.showTotal(total);
+
+        StorageCtrl.deleteProduct(selectedProduct.id);
 
         UICtrl.addingState();
 
@@ -106,7 +107,11 @@ const App = (function(ProductCtrl, UICtrl, StorageCtrl) {
                 UICtrl.hideCard();
             }else{
                 UICtrl.createProductList(products);
+
             }
+            const total = ProductCtrl.getTotal();
+        
+            UICtrl.showTotal(total);
 
             loadEventListeners(); 
         }
