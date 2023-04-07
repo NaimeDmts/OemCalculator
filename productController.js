@@ -47,6 +47,19 @@ const ProductController = (function(){
             data.products.push(newProduct);
             return newProduct;
         },
+        updateProduct : function(name, price){
+            let product = null;
+
+            data.products.forEach(function(prd){
+                if(prd.id == data.selectedProduct.id){
+                    prd.name = name;
+                    prd.price = parseFloat(price);
+                    product = prd;
+                }
+            });
+
+            return product;
+        },
         getTotal: function(){
             let total=0;
 

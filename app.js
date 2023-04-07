@@ -5,7 +5,8 @@ const App = (function(ProductCtrl, UICtrl) {
     const loadEventListeners = function(){
 
         document.querySelector(UISelectors.addButton).addEventListener('click', productAddSubmit);
-        document.querySelector(UISelectors.productList).addEventListener('click', productEditSubmit);
+        document.querySelector(UISelectors.productList).addEventListener('click', productEditClick);
+        document.querySelector(UISelectors.updateButton).addEventListener('click', editProductSubmit);
     }
 
     const productAddSubmit = function(e){
@@ -28,7 +29,7 @@ const App = (function(ProductCtrl, UICtrl) {
         console.log(productName, productPrice)
         e.preventDefault();
     }
-    const productEditSubmit = function(e){
+    const productEditClick = function(e){
 
         if(e.target.classList.contains('edit-product')){
             const id = 
@@ -43,6 +44,24 @@ const App = (function(ProductCtrl, UICtrl) {
             UICtrl.editState(e.target.parentNode.parentNode);
         }
 
+        e.preventDefault();
+    }
+    const editProductSubmit = function(e){
+        const productName = document.querySelector(UISelectors.productName).value;
+        const productPrice = document.querySelector(UISelectors.productPrice).value;
+
+        if(productName !== '' && productPrice !== ''){
+            
+            const updatedProduct = ProductCtrl.updateProduct(productName, productPrice);
+
+            let item = UICtrl.updateProduct(updatedProduct);
+            
+            const total = ProductCtrl.getTotal();
+        
+            UIController.showTotal(total);
+
+            UICtrl.addingState(item);
+        }
         e.preventDefault();
     }
  
