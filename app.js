@@ -38,6 +38,9 @@ const App = (function(ProductCtrl, UICtrl) {
             ProductCtrl.setCurrentProduct(product);
 
             UICtrl.addProductToForm();
+
+
+            UICtrl.editState(e.target.parentNode.parentNode);
         }
 
         e.preventDefault();
@@ -46,6 +49,9 @@ const App = (function(ProductCtrl, UICtrl) {
     return{
         init: function(){
             console.log('starting app...');
+
+            UICtrl.addingState();
+        
             const products = ProductCtrl.getProducts();
 
             if(products.length==0){
