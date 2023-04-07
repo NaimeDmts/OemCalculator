@@ -92,6 +92,14 @@ const UIController = (function(){
             document.querySelector(Selectors.productName).value = selectedProduct.name;
             document.querySelector(Selectors.productPrice).value = selectedProduct.price;
         },
+        deleteProduct : function(){
+            let items = document.querySelectorAll(Selectors.productListItems);
+            items.forEach(function(item){
+                if(item.classList.contains('bg-warning')){
+                    item.remove();
+                }
+            });
+        },
         addingState : function(item){
             UIController.clearWarnings();
             UIController.clearInputs();

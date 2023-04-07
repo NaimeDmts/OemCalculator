@@ -60,6 +60,15 @@ const ProductController = (function(){
 
             return product;
         },
+        deleteProduct : function(product){
+
+            data.products.forEach(function(prd,index){
+                if(prd.id == product.id){
+                    data.products.splice(index, 1);
+                }
+            })
+
+        },
         getTotal: function(){
             let total=0;
 
