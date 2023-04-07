@@ -6,7 +6,7 @@ const ProductController = (function(){
     }
 
     const data = {
-        products : [],
+        products : StorageController.getProducts(),
         selectedProduct:null,
         totalPrice:0
     }

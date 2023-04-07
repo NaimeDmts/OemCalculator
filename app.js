@@ -1,4 +1,4 @@
-const App = (function(ProductCtrl, UICtrl) {
+const App = (function(ProductCtrl, UICtrl, StorageCtrl) {
 
     const UISelectors = UIController.getSelectors();
 
@@ -20,6 +20,8 @@ const App = (function(ProductCtrl, UICtrl) {
            const newProduct = ProductCtrl.addProduct(productName,productPrice);
            
            UIController.addProduct(newProduct);
+
+           StorageCtrl.storeProduct(newProduct);
 
            const total = ProductCtrl.getTotal();
         
@@ -109,5 +111,5 @@ const App = (function(ProductCtrl, UICtrl) {
             loadEventListeners(); 
         }
     }
-})(ProductController, UIController);
+})(ProductController, UIController, StorageController);
 App.init();
